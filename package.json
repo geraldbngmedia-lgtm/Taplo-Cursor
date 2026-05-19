@@ -55,38 +55,26 @@
       "output": "release-build",
       "buildResources": "build"
     },
-    "files": ["build/electron/**/*", "out/**/*", "package.json"],
+    "npmRebuild": false,
+    "files": [
+      "build/electron/**/*",
+      "out/**/*",
+      "package.json",
+      "!release{,-build}/**/*"
+    ],
     "asarUnpack": ["**/*.node", "**/node_modules/sql.js/**/*", "**/node_modules/@recallai/**/*"],
     "mac": {
       "category": "public.app-category.productivity",
       "target": ["dmg"],
       "artifactName": "Taplo-${version}-mac.${ext}",
-      "identity": null
+      "identity": null,
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
     },
     "win": {
       "target": ["nsis"],
       "artifactName": "Taplo-${version}-win-setup.${ext}",
-      "signAndEditExecutable": false,
-      "extraFiles": [
-        {
-          "from": "node_modules/electron/dist",
-          "to": ".",
-          "filter": [
-            "icudtl.dat",
-            "chrome_100_percent.pak",
-            "chrome_200_percent.pak",
-            "ffmpeg.dll",
-            "libEGL.dll",
-            "libGLESv2.dll",
-            "d3dcompiler_47.dll",
-            "dxcompiler.dll",
-            "dxil.dll",
-            "locales/**/*",
-            "LICENSE",
-            "LICENSES.chromium.html"
-          ]
-        }
-      ]
+      "signAndEditExecutable": false
     },
     "nsis": {
       "oneClick": false,
