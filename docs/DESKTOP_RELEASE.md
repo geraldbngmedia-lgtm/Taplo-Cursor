@@ -32,3 +32,13 @@ Redeploy after changing env vars.
 If installers are under ~100 MB each, `npm run package:publish` and deploy so `https://taplo.app/downloads/Taplo-win.exe` is served from `public/downloads/` (Next static export). Larger builds should use GitHub Releases URLs above.
 
 Default landing URLs (when env vars are unset) point at `https://taplo.app/downloads/...`.
+
+## macOS: "app is damaged" or won't open
+
+Installers are **not Apple-notarized yet**, so Gatekeeper may block the app. Users can:
+
+1. **Right-click** Taplo in Applications → **Open** → confirm **Open** (do this once; double-click works after).
+2. **System Settings** → **Privacy & Security** → **Open Anyway** (if shown).
+3. Terminal: `xattr -cr /Applications/Taplo.app` then open Taplo again.
+
+A permanent fix requires an Apple Developer account, code signing, and notarization in the release workflow.

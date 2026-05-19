@@ -89,4 +89,9 @@ export const PRICING_FAQ = [
     answer:
       "Prices are shown in SEK excluding 25% Swedish VAT. VAT is added where applicable on invoices.",
   },
+  {
+    question: "Mac says Taplo is damaged or won't open — what do I do?",
+    answer:
+      "macOS blocks apps that are not signed by Apple yet. After installing, open Taplo by right-clicking the app and choosing Open (not double-click), then confirm Open in the dialog. You can also go to System Settings → Privacy & Security and click Open Anyway next to the Taplo message. If it still fails, open Terminal and run: xattr -cr /Applications/Taplo.app — then open Taplo again.",
+  },
 ];
