@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import { DownloadLink } from "./download-link";
+import { AutoDownloadCta } from "./auto-download-cta";
 
 const NAV_LINKS = [
   { href: "#features", label: "Features" },
@@ -75,12 +75,10 @@ export function LandingMobileNav() {
             </a>
           ))}
           <div className="p-2 pt-1">
-            <DownloadLink
+            <AutoDownloadCta
               onClick={close}
               className="w-full min-h-[44px] inline-flex items-center justify-center rounded-full px-5 py-3 text-sm text-white bg-gradient-to-b from-[#ff7a5c] to-[#f06b4e] border border-[#d9593f] shadow-[0_5px_14px_rgba(255,122,92,0.28)]"
-            >
-              Start free trial
-            </DownloadLink>
+            />
           </div>
         </nav>
       </div>

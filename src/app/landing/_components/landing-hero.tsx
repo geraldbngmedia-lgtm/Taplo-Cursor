@@ -1,12 +1,11 @@
 import {
   Bell,
   Calendar,
-  Download,
   FileText,
   Mic,
 } from "lucide-react";
 import { FREE_TRIAL } from "../plans";
-import { DownloadLink } from "./download-link";
+import { LandingHeroDownloads } from "./landing-hero-downloads";
 
 export function LandingHero() {
   return (
@@ -41,21 +40,7 @@ export function LandingHero() {
             the candidate actually said.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
-            <DownloadLink
-              platform="mac"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-900 text-white text-base font-normal shadow-[0_10px_24px_rgba(15,23,42,0.26),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <Download className="w-5 h-5" strokeWidth={1.5} />
-              Start free trial
-            </DownloadLink>
-            <DownloadLink
-              platform="win"
-              className="w-full sm:w-auto inline-flex items-center justify-center rounded-full px-6 py-4 border border-slate-300 bg-white/90 text-slate-800 text-sm font-medium hover:border-orange-200 hover:text-orange-600 transition-all duration-300"
-            >
-              Download for Windows
-            </DownloadLink>
-          </div>
+          <LandingHeroDownloads />
 
           <p className="mt-4 text-sm font-medium text-[#ff7a5c] text-center lg:text-left leading-snug max-w-md mx-auto lg:mx-0">
             <span className="block sm:inline">{FREE_TRIAL.label}</span>

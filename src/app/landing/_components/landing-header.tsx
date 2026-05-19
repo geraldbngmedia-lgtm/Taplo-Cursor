@@ -1,4 +1,4 @@
-import { DownloadLink } from "./download-link";
+import { AutoDownloadCta } from "./auto-download-cta";
 import { LandingMobileNav } from "./landing-mobile-nav";
 import { LOGO_SRC } from "../constants";
 
@@ -39,12 +39,12 @@ export function LandingHeader() {
             </div>
 
             <div className="flex items-center gap-2 shrink-0">
-              <DownloadLink className="hidden sm:inline-flex items-center justify-center rounded-full px-5 py-2 text-sm text-white bg-gradient-to-b from-[#ff7a5c] to-[#f06b4e] border border-[#d9593f] shadow-[0_5px_14px_rgba(255,122,92,0.28),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-[#ff947a] hover:to-[#ff7a5c] hover:-translate-y-0.5 transition-all duration-300">
-                Start free trial
-              </DownloadLink>
-              <DownloadLink className="sm:hidden inline-flex items-center justify-center rounded-full px-3 py-2 text-xs text-white bg-gradient-to-b from-[#ff7a5c] to-[#f06b4e] border border-[#d9593f] shadow-[0_5px_14px_rgba(255,122,92,0.28)]">
-                Try free
-              </DownloadLink>
+              <AutoDownloadCta className="hidden sm:inline-flex items-center justify-center rounded-full px-5 py-2 text-sm text-white bg-gradient-to-b from-[#ff7a5c] to-[#f06b4e] border border-[#d9593f] shadow-[0_5px_14px_rgba(255,122,92,0.28),inset_0_1px_0_rgba(255,255,255,0.35)] hover:from-[#ff947a] hover:to-[#ff7a5c] hover:-translate-y-0.5 transition-all duration-300" />
+              <AutoDownloadCta
+                variant="short"
+                fallbackLabel="Try free"
+                className="sm:hidden inline-flex items-center justify-center rounded-full px-3 py-2 text-xs text-white bg-gradient-to-b from-[#ff7a5c] to-[#f06b4e] border border-[#d9593f] shadow-[0_5px_14px_rgba(255,122,92,0.28)]"
+              />
               <LandingMobileNav />
             </div>
           </div>

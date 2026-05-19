@@ -1,5 +1,5 @@
 import { FileText, ListChecks, Mail, User } from "lucide-react";
-import { DownloadLink } from "./download-link";
+import { AutoDownloadOutputCta } from "./auto-download-output-cta";
 
 const outputs = [
   {
@@ -53,12 +53,7 @@ export function LandingOutput() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <DownloadLink
-                platform="mac"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 bg-white text-slate-900 text-base font-medium shadow-[inset_0_1px_0_white] hover:bg-slate-100 hover:-translate-y-0.5 transition-all"
-              >
-                Download for Mac
-              </DownloadLink>
+              <AutoDownloadOutputCta />
             </div>
           </div>
 

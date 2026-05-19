@@ -42,6 +42,22 @@ if (!singleInstanceLock) {
   app.quit();
 }
 
+function resolveAppIconPath() {
+  const candidates = [
+    path.join(process.resourcesPath, "icon.png"),
+    path.join(app.getAppPath(), "branding", "icon.png"),
+    path.join(__dirname, "..", "..", "branding", "icon.png"),
+  ];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return undefined;
+}
+
 const emptyWorkspace = () => ({
   schemaVersion: 1,
   meetings: [],
@@ -58,12 +74,15 @@ const emptyWorkspace = () => ({
 });
 
 async function createWindow() {
+  const iconPath = resolveAppIconPath();
+
   mainWindow = new BrowserWindow({
     width: 1320,
     height: 900,
     minWidth: 1100,
     minHeight: 720,
     title: "Taplo",
+    ...(iconPath ? { icon: iconPath } : {}),
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
@@ -88,12 +107,15 @@ async function createPanelWindow(meetingId: string) {
     return;
   }
 
+  const iconPath = resolveAppIconPath();
+
   panelWindow = new BrowserWindow({
     width: 460,
     height: 720,
     minWidth: 420,
     minHeight: 600,
     title: "Taplo Meeting Panel",
+    ...(iconPath ? { icon: iconPath } : {}),
     alwaysOnTop: true,
     fullscreenable: false,
     resizable: true,

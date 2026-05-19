@@ -1,6 +1,6 @@
 import { Download } from "lucide-react";
 import { FREE_TRIAL } from "../plans";
-import { DownloadLink } from "./download-link";
+import { AutoDownloadCta } from "./auto-download-cta";
 
 export function LandingCta() {
   return (
@@ -27,10 +27,11 @@ export function LandingCta() {
           </p>
 
           <div className="mt-8 flex justify-center">
-            <DownloadLink className="inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 bg-white text-slate-900 text-base font-medium shadow-[0_10px_24px_rgba(15,23,42,0.16),inset_0_1px_0_white] hover:bg-slate-50 hover:-translate-y-0.5 transition-all duration-300">
-              <Download className="w-5 h-5" strokeWidth={1.5} />
-              Start free trial
-            </DownloadLink>
+            <AutoDownloadCta
+              showIcon
+              icon={<Download className="w-5 h-5" strokeWidth={1.5} />}
+              className="inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 bg-white text-slate-900 text-base font-medium shadow-[0_10px_24px_rgba(15,23,42,0.16),inset_0_1px_0_white] hover:bg-slate-50 hover:-translate-y-0.5 transition-all duration-300"
+            />
           </div>
         </div>
       </div>

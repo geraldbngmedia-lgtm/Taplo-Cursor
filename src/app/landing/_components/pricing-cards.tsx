@@ -1,5 +1,7 @@
+"use client";
+
 import { PRICING_PLANS } from "../plans";
-import { DownloadLink } from "./download-link";
+import { AutoDownloadCta } from "./auto-download-cta";
 
 function PlanCta({
   plan,
@@ -20,7 +22,11 @@ function PlanCta({
   }
 
   return (
-    <DownloadLink className={className}>{plan.cta}</DownloadLink>
+    <AutoDownloadCta
+      className={className}
+      fallbackLabel={plan.cta}
+      labelMode="fixed"
+    />
   );
 }
 

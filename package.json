@@ -16,6 +16,7 @@
     "package:win": "npm run build:electron && electron-builder --win --x64",
     "package:mac": "npm run build:electron && electron-builder --mac",
     "package:publish": "node scripts/copy-installers-to-public.mjs",
+    "icons:generate": "powershell -ExecutionPolicy Bypass -File scripts/generate-brand-icons.ps1",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit && tsc -p tsconfig.electron.json --noEmit && tsc -p tsconfig.backend.json --noEmit"
   },
@@ -53,8 +54,15 @@
     "copyright": "Copyright © 2026 Taplo",
     "directories": {
       "output": "release-build",
-      "buildResources": "build"
+      "buildResources": "branding"
     },
+    "icon": "branding/icon.png",
+    "extraResources": [
+      {
+        "from": "branding/icon.png",
+        "to": "icon.png"
+      }
+    ],
     "npmRebuild": false,
     "files": [
       "build/electron/**/*",
