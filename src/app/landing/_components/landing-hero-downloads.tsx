@@ -48,6 +48,16 @@ export function LandingHeroDownloads() {
           {otherLabel}
         </DownloadLink>
       ) : null}
+      {platform === "mac" ? (
+        <p className="text-xs text-slate-500 font-light text-center lg:text-left max-w-md leading-relaxed">
+          If macOS says the app is damaged, right-click Taplo →{" "}
+          <strong className="font-medium text-slate-600">Open</strong>, or see{" "}
+          <a href="#faq" className="text-orange-600 hover:underline">
+            FAQ
+          </a>
+          .
+        </p>
+      ) : null}
     </div>
   );
 }
