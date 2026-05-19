@@ -1,0 +1,94 @@
+{
+  "name": "taplo-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "main": "build/electron/main.js",
+  "scripts": {
+    "dev:web": "next dev",
+    "electron:compile": "tsc -p tsconfig.electron.json",
+    "backend:compile": "tsc -p tsconfig.backend.json",
+    "backend:start": "node build/backend/server.js",
+    "dev:electron": "concurrently -k \"next dev\" \"tsc -p tsconfig.electron.json --watch\" \"wait-on http://localhost:3000 build/electron/main.js && cross-env NEXT_PUBLIC_APP_MODE=electron ELECTRON_START_URL=http://localhost:3000 electron .\"",
+    "build:web": "next build",
+    "build:electron": "npm run electron:compile && next build",
+    "build:backend": "npm run backend:compile",
+    "package": "npm run build:electron && electron-builder",
+    "package:win": "npm run build:electron && electron-builder --win --x64",
+    "package:mac": "npm run build:electron && electron-builder --mac",
+    "package:publish": "node scripts/copy-installers-to-public.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.electron.json --noEmit && tsc -p tsconfig.backend.json --noEmit"
+  },
+  "dependencies": {
+    "@recallai/desktop-sdk": "^2.0.15",
+    "lucide-react": "^1.16.0",
+    "next": "^16.2.6",
+    "openai": "^6.38.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "sql.js": "^1.14.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@tailwindcss/postcss": "^4.3.0",
+    "@types/node": "^25.9.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/sql.js": "^1.4.11",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^42.1.0",
+    "electron-builder": "^26.8.1",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.6",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3",
+    "wait-on": "^9.0.10"
+  },
+  "build": {
+    "appId": "app.taplo.desktop",
+    "productName": "Taplo",
+    "copyright": "Copyright © 2026 Taplo",
+    "directories": {
+      "output": "release-build",
+      "buildResources": "build"
+    },
+    "files": ["build/electron/**/*", "out/**/*", "package.json"],
+    "asarUnpack": ["**/*.node", "**/node_modules/sql.js/**/*", "**/node_modules/@recallai/**/*"],
+    "extraFiles": [
+      {
+        "from": "node_modules/electron/dist",
+        "to": ".",
+        "filter": [
+          "icudtl.dat",
+          "chrome_100_percent.pak",
+          "chrome_200_percent.pak",
+          "ffmpeg.dll",
+          "libEGL.dll",
+          "libGLESv2.dll",
+          "d3dcompiler_47.dll",
+          "dxcompiler.dll",
+          "dxil.dll",
+          "locales/**/*",
+          "LICENSE",
+          "LICENSES.chromium.html"
+        ]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": ["dmg"],
+      "artifactName": "Taplo-${version}-mac.${ext}"
+    },
+    "win": {
+      "target": ["nsis"],
+      "artifactName": "Taplo-${version}-win-setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "framework": null,
+  "buildCommand": "npm run build:web && node scripts/prepare-vercel-static.mjs",
+  "outputDirectory": "out",
+  "redirects": [
+    { "source": "/landing", "destination": "/", "permanent": true },
+    { "source": "/pricing", "destination": "/#pricing", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [{ "key": "X-Content-Type-Options", "value": "nosniff" }]
+    }
+  ]
+}

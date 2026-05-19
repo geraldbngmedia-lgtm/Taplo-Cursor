@@ -1,0 +1,10 @@
+node_modules
+release
+release-build
+.next
+build
+backend/data
+out
+*.log
+public/downloads/Taplo-win.exe
+public/downloads/Taplo-mac.dmg

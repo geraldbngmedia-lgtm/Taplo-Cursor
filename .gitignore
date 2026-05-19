@@ -1,0 +1,16 @@
+.next/
+build/
+dist/
+node_modules/
+out/
+*.log
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local
+backend/data/
+.vercel
+release/
+release-build/
+public/downloads/*.dmg
+public/downloads/*.exe

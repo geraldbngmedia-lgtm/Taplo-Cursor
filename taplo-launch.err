@@ -1,0 +1,9 @@
+[0519/162355.788:ERROR:base\i18n\icu_util.cc:232] Invalid file descriptor to ICU data received.
+Received fatal exception EXCEPTION_BREAKPOINT
+	Taplo!Cr_z_adler32 [0x7ff6c8676b7f+63ff]
+	Taplo!llhttp_get_errno [0x7ff6c7039626+24e6]
+	Taplo!llhttp_get_errno [0x7ff6c703808e+f4e]
+	Taplo!llhttp_get_errno [0x7ff6c7038623+14e3]
+	Taplo!v8::Extension::set_auto_enable [0x7ff6c68f4e8e+1016e]
+	Taplo!Cr_z_crc32 [0x7ff6cb3f3fc2+6b4662]
+	KERNEL32!GetProcAddress [0x7ffeb693144c+ea8dc]
