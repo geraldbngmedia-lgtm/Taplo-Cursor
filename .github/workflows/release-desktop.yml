@@ -10,6 +10,8 @@ permissions:
 
 jobs:
   build:
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: false
     strategy:
       fail-fast: false
       matrix:
@@ -32,6 +34,7 @@ jobs:
           cache: npm
 
       - run: npm ci
+      - run: npm run typecheck
       - run: ${{ matrix.cmd }}
 
       - name: Stage stable release filename
